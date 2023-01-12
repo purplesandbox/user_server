@@ -26,7 +26,7 @@ mongoose.connect("mongodb+srv://" + username + ":" + password + "@cluster0.fkigr
 // API for getting all the records from the User model of the UserDB
 
 
-app.get('https://bullet-point-journal-users.onrender.com/users', async (req, res) => { 
+app.get('/users', async (req, res) => { 
 
     User.find({}, (err, result) => {
         if (err) {
@@ -43,7 +43,7 @@ app.get('https://bullet-point-journal-users.onrender.com/users', async (req, res
 
 // API for creating records in the Users collection in the UserDB
 
-app.post('https://bullet-point-journal-users.onrender.com/user/new', (req, res) => {
+app.post('/user/new', (req, res) => {
     const user = new User ({
         fname:  req.body.fname,
         surname: req.body.surname,
