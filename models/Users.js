@@ -1,5 +1,15 @@
 const mongoose = require('mongoose');
 
+const ItemSchema = new mongoose.Schema({
+    item : String,
+    timestamp: {
+        type: String,
+        default: Date.now()
+    }
+});
+
+const Item = mongoose.model("Item", ItemSchema);
+
 
 const UserRegistrationSchema = new mongoose.Schema({
 
@@ -7,9 +17,14 @@ const UserRegistrationSchema = new mongoose.Schema({
     surname: String,
     email: String,
     password: String,
-    confirmpassword: String
+    confirmpassword: String,
+    gratitude:  [ItemSchema],
+    affirmation: [ItemSchema],
+    step: [ItemSchema]
     
 });
+
+
 
 
 
@@ -17,4 +32,4 @@ const User = mongoose.model("User", UserRegistrationSchema);
 
 
 
-module.exports = { User };
+module.exports = { User, Item };
