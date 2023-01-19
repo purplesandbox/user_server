@@ -50,8 +50,8 @@ app.post('/user/new', async (req, res) => {
          fname:  req.body.fname,
          surname: req.body.surname,
          email: req.body.email,
-         password: req.body.password,
-         confirmpassword: req.body.confirmpassword
+         password: md5(req.body.password),
+         confirmpassword: md5(req.body.confirmpassword)
      });
     newUser.save();
     res.json(newUser);
